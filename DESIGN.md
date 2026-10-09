@@ -38,14 +38,14 @@ visual direction — read and preserve them on every subsequent build; do not
 re-derive a new direction. The first UI pass must fill these fields in as
 part of that build, not leave them as an empty template.
 
-- Product mode: `operate` | `read` | `persuade` | `experience`
-- Audience and cadence:
-- Visual world (name + the feeling it creates):
-- Palette family + neutral undertone:
-- Type treatment:
-- Composition:
-- Shape language:
-- Anti-references (defaults this app must not drift toward):
+- Product mode: `operate`
+- Audience and cadence: people donating or receiving surplus food nearby; quick mobile check-ins several times a day.
+- Visual world (name + the feeling it creates): Warm Kitchen Table — cream paper, saffron orange, hand-lettered Briem Hand wordmarks; friendly and community-minded.
+- Palette family + neutral undertone: saffron orange (#FA6400) on cream (#FAF6E8 / #FCFFF1 / #FFF2C2), warm neutrals.
+- Type treatment: Briem Hand bold uppercase with oversized orange initial for brand/headings; Helvetica for UI text.
+- Composition: single 402px-wide mobile column, centered on larger screens; cards and bottom tab bar.
+- Shape language: very rounded cards (30-40px), pill dots, rounded-square icon buttons.
+- Anti-references (defaults this app must not drift toward): gray SaaS, glassy gradients, stock charity imagery.
 
 ## Agent-Native is structural, not visual
 
