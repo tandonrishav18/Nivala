@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { BottomNav } from "@/components/nivala/bottom-nav";
 import { APP_TITLE } from "@/lib/app-config";
@@ -31,14 +31,17 @@ function DonorCard({
   image,
   title,
   description,
+  onClick,
 }: {
   image: string;
   title: string;
   description: string;
+  onClick: () => void;
 }) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="relative flex h-[88px] w-full items-center gap-[9px] overflow-hidden rounded-[31px] bg-nv-card pr-[10px] text-left shadow-[0_4px_4.5px_rgba(0,0,0,0.01)] transition-transform active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-nv-orange"
     >
       <img
@@ -58,6 +61,7 @@ function DonorCard({
 }
 
 export default function DonateRoute() {
+  const navigate = useNavigate();
   return (
     <div className="flex min-h-full justify-center bg-nv-sun/40 font-body">
       <div className="relative flex min-h-screen w-full max-w-[402px] flex-col overflow-hidden bg-nv-cream">
@@ -102,11 +106,13 @@ export default function DonateRoute() {
             image={img.business}
             title="Restaurant / Business"
             description="Donate surplus from your restaurant/organisation"
+            onClick={() => navigate("/donate/details")}
           />
           <DonorCard
             image={img.individual}
             title="Individual"
             description="Donate food personally"
+            onClick={() => navigate("/donate/details")}
           />
         </div>
 
