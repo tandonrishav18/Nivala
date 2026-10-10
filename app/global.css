@@ -5,6 +5,16 @@
 
 @source "./**/*.{ts,tsx}";
 
+@theme {
+  --color-nv-cream: #faf6e8;
+  --color-nv-card: #fcfff1;
+  --color-nv-sun: #fff2c2;
+  --color-nv-orange: #fa6400;
+  --color-nv-dot: #777777;
+  --font-display: "Briem Hand", "Trebuchet MS", sans-serif;
+  --font-body: Helvetica, Arial, sans-serif;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 0 0% 10%;
