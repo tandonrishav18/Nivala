@@ -1,12 +1,8 @@
 import { APP_TITLE } from "@/lib/app-config";
-import {
-  BellIcon,
-  DiscoverIcon,
-  HomeIcon,
-  HotelIcon,
-  PeopleIcon,
-  ProfileIcon,
-} from "@/components/nivala/icons";
+import { useNavigate } from "react-router";
+
+import { BottomNav } from "@/components/nivala/bottom-nav";
+import { HotelIcon, PeopleIcon } from "@/components/nivala/icons";
 
 export function meta() {
   return [
@@ -52,6 +48,7 @@ function ActionCard({
   image,
   imageSide,
   label,
+  onClick,
 }: {
   lead: string;
   rest: string;
@@ -59,11 +56,13 @@ function ActionCard({
   image: string;
   imageSide: "left" | "right";
   label: string;
+  onClick?: () => void;
 }) {
   return (
     <button
       type="button"
       aria-label={label}
+      onClick={onClick}
       className={`flex h-[88px] min-w-0 flex-1 items-center gap-2 rounded-[31px] bg-nv-card px-2 text-left transition-transform active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-nv-orange ${
         imageSide === "right" ? "flex-row-reverse pl-[13px]" : "pr-[13px]"
       }`}
@@ -163,10 +162,8 @@ function FoodCard({
   );
 }
 
-const navBtn =
-  "flex size-[42px] items-center justify-center rounded-[14px] bg-nv-card text-black focus-visible:outline-2 focus-visible:outline-nv-orange";
-
 export default function HomeRoute() {
+  const navigate = useNavigate();
   return (
     <div className="flex min-h-full justify-center bg-nv-sun/40 font-body">
       <div className="relative flex min-h-screen w-full max-w-[402px] flex-col overflow-hidden bg-nv-cream sm:my-0">
@@ -208,6 +205,7 @@ export default function HomeRoute() {
             image={img.donate}
             imageSide="left"
             label="Donate food"
+            onClick={() => navigate("/donate")}
           />
           <ActionCard
             lead="R"
@@ -322,28 +320,7 @@ export default function HomeRoute() {
           </div>
         </section>
 
-        <nav
-          aria-label="Primary"
-          className="sticky bottom-0 z-10 flex h-[66px] items-end justify-between bg-nv-sun px-12 pb-3 pt-3"
-        >
-          <button
-            type="button"
-            aria-label="Home"
-            aria-current="page"
-            className="flex size-[42px] items-center justify-center rounded-[14px] bg-nv-orange text-white focus-visible:outline-2 focus-visible:outline-black"
-          >
-            <HomeIcon />
-          </button>
-          <button type="button" aria-label="Discover" className={navBtn}>
-            <DiscoverIcon />
-          </button>
-          <button type="button" aria-label="Notifications" className={navBtn}>
-            <BellIcon />
-          </button>
-          <button type="button" aria-label="Profile" className={navBtn}>
-            <ProfileIcon />
-          </button>
-        </nav>
+        <BottomNav />
       </div>
     </div>
   );
