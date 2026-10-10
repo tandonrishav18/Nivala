@@ -214,6 +214,7 @@ export default function HomeRoute() {
             image={img.receive}
             imageSide="right"
             label="Receive food"
+            onClick={() => navigate("/receive")}
           />
           <svg
             width="37"
