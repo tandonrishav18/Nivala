@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { BottomNav } from "@/components/nivala/bottom-nav";
 import { APP_TITLE } from "@/lib/app-config";
@@ -17,7 +17,7 @@ const img = {
 export default function ReceiveRoute() {
   const [isNgo, setIsNgo] = useState(false);
   const [org, setOrg] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   const ready = isNgo && org.trim().length > 0;
 
   return (
@@ -64,7 +64,7 @@ export default function ReceiveRoute() {
           className="flex flex-col"
           onSubmit={(e) => {
             e.preventDefault();
-            if (ready) setSubmitted(true);
+            if (ready) navigate("/receive/available");
           }}
         >
           <button
@@ -104,10 +104,7 @@ export default function ReceiveRoute() {
             <input
               id="org-name"
               value={org}
-              onChange={(e) => {
-                setOrg(e.target.value);
-                setSubmitted(false);
-              }}
+              onChange={(e) => setOrg(e.target.value)}
               className="w-full rounded-xl border border-[#E8E1D3] bg-[#FAFAF9] px-3.5 py-3 text-sm text-[#1A1816] focus:border-nv-orange focus:outline-none focus:ring-2 focus:ring-nv-orange/30"
             />
           </div>
@@ -128,11 +125,6 @@ export default function ReceiveRoute() {
               />
             </svg>
           </button>
-          {submitted && (
-            <p role="status" className="mt-2 text-center text-[11px] text-[#78716C]">
-              Searching for food near you…
-            </p>
-          )}
         </form>
 
         <section className="relative mt-4 flex flex-1 items-end">
